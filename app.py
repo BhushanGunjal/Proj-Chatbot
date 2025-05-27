@@ -29,9 +29,9 @@ if st.button("Generate Insight") and user_query.strip():
             start_date=query_info['start_date'],
             end_date=query_info['end_date'],
             store_name=store_name,
-            kpi_filters=query_info['mentioned_kpis'],
+            # kpi_filters=query_info['mentioned_kpis'],
             user_query=user_query,
-            top_k=query_info['days_back']  # ✅ This links everything together!
+            # top_k=query_info['days_back']  # ✅ This links everything together!
         )
 
         # === Step 3: Final Answer from LLM ===

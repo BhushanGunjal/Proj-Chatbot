@@ -23,7 +23,7 @@ The user has asked the following question:
 {query}
 
 Based on the provided data, respond with clear, concise, and actionable business-friendly insights.
-Do not assume any KPI values. Only use what's given in the context.
+Do not assume any KPI values. Only use what's given in the context. Use daily_sales for daily sales insights.
 """)
 
 def final_response_agent(query: str, retrieved_chunks: list, fallback_df: pd.DataFrame = None) -> str:
@@ -46,8 +46,9 @@ def final_response_agent(query: str, retrieved_chunks: list, fallback_df: pd.Dat
     print("\n[🗣️ DEBUG] Query Sent to LLM:\n", query)
 
     # Format prompt and get LLM response
-    messages = prompt_template.format(query=query, context=context)
-    response = llm(messages)
+    # messages = prompt_template.format(query=query, context=context)
+    response = llm.invoke(prompt_template.format(query=query, context=context))
+
 
     return response.content
 
